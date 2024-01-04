@@ -1,11 +1,13 @@
-#!/usr/bin/python3
-"""Solves the N-queens puzzle"""
-
 import sys
 
 
 def init_board(n):
-    """Initialize an `n`x`n` sized chessboard with 0's."""
+    """Initialize an `n`x`n` sized chessboard with 0's.
+    Args:
+        n: integer to initialize
+
+    Return: list of chessboard
+    """
     board = []
     [board.append([]) for i in range(n)]
     [row.append(' ') for i in range(n) for row in board]
@@ -13,14 +15,25 @@ def init_board(n):
 
 
 def board_deepcopy(board):
-    """Return a deepcopy of a chessboard."""
+    """Creates a deepcopy of a chessboard.
+    Arg:
+        board: chessboard to make copy from.
+
+    Return: a deepcopy of a chessboard.
+    """
     if isinstance(board, list):
         return list(map(board_deepcopy, board))
     return (board)
 
 
 def get_solution(board):
-    """Return the list of lists representation of a solved chessboard."""
+    """Creates the list of lists representation of a solved chessboard.
+
+    Arg:
+        board: list of cheswboard
+
+    Return: list of lists.
+    """
     solution = []
     for r in range(len(board)):
         for c in range(len(board)):
@@ -121,3 +134,4 @@ if __name__ == "__main__":
     solutions = recursive_solve(board, 0, 0, [])
     for sol in solutions:
         print(sol)
+
